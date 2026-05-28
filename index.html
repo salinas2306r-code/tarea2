@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)file:///C:/Users/A%20D%20V%20A%20N%20C%20E/index.html -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci en el Ahorro Progresivo</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* SECCIÓN 1: Portada o encabezado */
+        .main-header {
+            background-color: #1e3a8a;
+            color: white;
+            text-align: center;
+            padding: 30px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .main-header h1 {
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+        }
+
+        .main-header h2 {
+            font-size: 1.1rem;
+            font-weight: normal;
+            color: #93c5fd;
+        }
+
+        .author-info {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            border-top: 1px solid #3b82f6;
+            padding-top: 8px;
+        }
+
+        /* Tarjetas de Contenido */
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .card h3 {
+            color: #1e3a8a;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 5px;
+        }
+
+        .card p {
+            margin-bottom: 10px;
+            text-align: justify;
+        }
+
+        .highlight {
+            border-left: 4px solid #3b82f6;
+        }
+
+        /* Formulario e Inputs */
+        #miFormulario label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        #miFormulario input, #miFormulario select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            background-color: white;
+        }
+
+        #miFormulario button {
+            background-color: #10b981;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        #miFormulario button:hover {
+            background-color: #059669;
+        }
+
+        /* Ocultar la tarjeta de resultados al inicio para evitar el espacio en blanco */
+        #resultadoCard {
+            display: none;
+        }
+
+        /* Contenedor con scroll para controlar las tablas largas */
+        .tabla-contenedor {
+            max-height: 350px;
+            overflow-y: auto;
+            margin-top: 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: #1e3a8a;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .main-header h1 {
+                font-size: 1.3rem;
+            }
+            .card {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <h1>Fibonacci aplicado a problemas del mundo real</h1>
+        <h2>Tema elegido: Simulador interactivo de ahorro (Días/Meses) con multiplicador de Fibonacci</h2>
+        <div class="author-info">
+            <p><strong>Estudiante:</strong> Salinas Ramos Diego</p>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <div class="card">
+            <h3>1. Contexto del Problema (Introducción)</h3>
+            <p>Esta aplicación sirve como una herramienta práctica y didáctica para que las personas visualicen y proyecten en tiempo real cuánto dinero pueden ahorrar. Muchos planes tradicionales fallan porque exigen cuotas fijas que se vuelven difíciles de mantener. Este simulador propone un sistema dinámico basado en la famosa serie matemática de Fibonacci.</p>
+            <p>El propósito principal es ofrecer flexibilidad al ahorrador. Al permitirle elegir el tiempo y la cantidad inicial, el usuario puede experimentar y estructurar un hábito financiero que se adapte perfectamente a sus capacidades económicas, observando cómo pequeños depósitos se convierten en capitales significativos.</p>
+        </div>
+
+        <div class="card">
+            <h3>2. Explicación del Algoritmo y Funcionamiento del Plan</h3>
+            <p>El programa calcula de manera automatizada la secuencia de Fibonacci mediante un bucle iterativo <code>for</code> controlado por el tiempo que introduzca el usuario. Dentro de este ciclo se procesa la fórmula matemática tradicional <code>c = a + b</code> para definir el valor de cada periodo.</p>
+            
+            <p><strong>¿Para qué sirve la cantidad inicial base y por qué la pusimos?</strong> La serie de Fibonacci pura siempre comienza con los valores mínimos de 1 y 1. Si dejáramos el simulador así, el usuario estaría obligado a ahorrar montos fijos muy pequeños (Bs. 1, Bs. 1, Bs. 2, Bs. 3...). Para solucionar esto e introducir una utilidad financiera real, incluimos el campo <strong>"Cantidad inicial base"</strong>. Esta variable funciona como un factor de escala multiplicador: toma el valor puro de Fibonacci de ese mes/día y lo multiplica por el dinero base que el usuario decida ingresar. Esto sirve para adaptar el plan al presupuesto de cualquier persona, permitiendo simular planes más altos de forma proporcional.</p>
+            
+            <p><strong>Diferencia entre Depósito Correspondiente y Saldo Acumulado:</strong> Es fundamental comprender que el programa maneja estos dos conceptos financieros de manera independiente dentro del bucle:</p>
+            <ul>
+                <li><strong>Depósito Correspondiente:</strong> Es la cantidad exacta de dinero en bolivianos (Bs.) que el ahorrador debe meter a su alcancía exclusivamente en ese día o mes específico. Este valor sigue la regla de Fibonacci multiplicada por la base (por ejemplo, en un plan con base de 5 Bs., los depósitos sucesivos serán de 5, 5, 10, 15, 25 Bs., donde cada depósito se calcula sumando las dos cuotas anteriores).</li>
+                <li><strong>Saldo Acumulado:</strong> Representa el pozo total o fondo acumulado que ya se encuentra guardado dentro de la alcancía. El algoritmo lo calcula sumando dinámicamente el depósito del periodo actual con el dinero total que ya se había recaudado en todos los pasos anteriores.</li>
+            </ul>
+            
+            <p style="margin-top: 10px;"><strong>¿Por qué incluimos la opción de elegir Días o Meses?</strong> Debido a que la serie de Fibonacci crece de forma exponencial (sumamente rápido), si se calcula un plan diario por muchos meses, el depósito requerido se dispararía a montos inalcanzables. Al añadir esta separación, permitimos que las personas que buscan metas a corto plazo vean exactamente cuánto pueden reunir día por día en periodos pequeños (de 1 a 30 días). Para metas de mediano o largo plazo, la persona selecciona el modo "Meses", manteniendo las cuotas dentro de montos realistas y accesibles para la economía de un hogar.</p>
+        </div>
+
+        <div class="card highlight">
+            <h3>3. Configuración del Simulador</h3>
+            <form id="miFormulario" onsubmit="return false;">
+                
+                <label for="tipoTiempo">Selecciona el modo de ahorro:</label>
+                <select id="tipoTiempo">
+                    <option value="meses">Planificar por Meses</option>
+                    <option value="dias">Planificar por Días</option>
+                </select>
+
+                <label for="tiempoInput">Ingresa la cantidad de tiempo (Número de Días o Meses):</label>
+                <input type="number" id="tiempoInput" placeholder="Ej. 12 si elegiste meses o 10 si elegiste días" min="1">
+
+                <label for="baseInput">¿Con cuántos bolivianos (Bs.) deseas iniciar de base?</label>
+                <input type="number" id="baseInput" placeholder="Ej. 10" min="1" value="1">
+                
+                <button type="button" onclick="calcularAhorro()">Calcular Plan de Ahorro</button>
+            </form>
+        </div>
+
+        <div class="card" id="resultadoCard">
+            <div id="res"></div>
+        </div>
+
+        <div class="card">
+            <h3>5. Conclusión</h3>
+            <p>La combinación de un menú selector de tiempo junto con un factor multiplicador demuestra cómo la programación y el diseño responsivo convierten una regla matemática abstracta en un software interactivo de gran valor utilitario. El usuario puede analizar las diferencias de crecimiento entre un ahorro diario y uno mensual, promoviendo la toma de decisiones financieras educadas. Este desarrollo cumple rigurosamente con los criterios de captura de datos y manipulación dinámica del HTML evaluados en la materia.</p>
+        </div>
+
+    </div>
+
+    <script>
+        function calcularAhorro(){
+            // Captura de datos usando var e IDs de los elementos (Estilo exacto de la clase)
+            var tipo = document.getElementById("tipoTiempo").value;
+            var tiempo = parseInt(document.getElementById("tiempoInput").value);
+            var baseAhorro = parseInt(document.getElementById("baseInput").value);
+
+            // Validación de los datos del formulario
+            if (isNaN(tiempo) || tiempo < 1 || isNaN(baseAhorro) || baseAhorro < 1) {
+                alert("Por favor, ingresa valores válidos mayores a 0.");
+                return;
+            }
+
+            // Alerta de seguridad si eligen muchos días para evitar números infinitos en pantalla
+            if (tipo == "dias" && tiempo > 40) {
+                alert("Para planes mayores a 40 días se recomienda usar el modo 'Meses', debido al crecimiento exponencial de Fibonacci.");
+                return;
+            }
+
+            // Variables de control clásicas de Fibonacci con 'var'
+            var a = 0;
+            var b = 1;
+            var c = 0;
+            var totalAhorrado = 0;
+            
+            // Variable de texto para construir la tabla interactiva
+            var tablaHTML = "";
+            var etiquetaTiempo = "";
+
+            if (tipo == "meses") {
+                etiquetaTiempo = "Mes";
+            } else {
+                etiquetaTiempo = "Día";
+            }
+            
+            tablaHTML = tablaHTML + "<p>Plan generado por <b>" + tiempo + " " + tipo + "</b> con una base inicial de <b>Bs. " + baseAhorro + "</b>:</p>";
+            
+            // Contenedor con barra de desplazamiento (Scroll)
+            tablaHTML = tablaHTML + "<div class='tabla-contenedor'>";
+            tablaHTML = tablaHTML + "<table border='1'>";
+            tablaHTML = tablaHTML + "<thead><tr><th>" + etiquetaTiempo + "</th><th>Término Fibonacci</th><th>Depósito correspondiente</th><th>Saldo Acumulado</th></tr></thead>";
+            tablaHTML = tablaHTML + "<tbody>";
+
+            // Ciclo iterativo unificado
+            for (var i = 1; i <= tiempo; i++) {
+                var fiboPuro = 0;
+                
+                if (i == 1) {
+                    fiboPuro = 1;
+                } else {
+                    c = a + b;
+                    fiboPuro = c;
+                    a = b;
+                    b = c;
+                }
+                
+                // Aplicación del multiplicador base
+                var ahorroFinal = fiboPuro * baseAhorro;
+                
+                // Acumulador total (Saldo Acumulado)
+                totalAhorrado = totalAhorrado + ahorroFinal;
+
+                // Armado de la fila correspondiente reflejando ambos conceptos claramente
+                tablaHTML = tablaHTML + "<tr>";
+                tablaHTML = tablaHTML + "<td>" + etiquetaTiempo + " " + i + "</td>";
+                tablaHTML = tablaHTML + "<td>F(" + i + ") = " + fiboPuro + "</td>";
+                tablaHTML = tablaHTML + "<td>Bs. " + ahorroFinal + "</td>";
+                tablaHTML = tablaHTML + "<td><b>Bs. " + totalAhorrado + "</b></td>";
+                tablaHTML = tablaHTML + "</tr>";
+            }
+
+            tablaHTML = tablaHTML + "</tbody></table>";
+            tablaHTML = tablaHTML + "</div>";
+            
+            // Mensaje final modificado exactamente a "Saldo Acumulado"
+            tablaHTML = tablaHTML + "<p style='margin-top: 15px; text-align: right; font-size: 1.2rem;'><b>Saldo Acumulado: <span style='color: #10b981;'>Bs. " + totalAhorrado + "</span></b></p>";
+
+            // Hacer visible la tarjeta de resultados justo antes de inyectar los datos
+            document.getElementById('resultadoCard').style.display = "block";
+
+            // Inyección en el elemento interactivo por medio de .innerHTML
+            document.getElementById('res').innerHTML = tablaHTML;
+        }
+    </script>
+
+</body></html>
